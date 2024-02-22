@@ -1,0 +1,47 @@
+---
+const { title, excerpt, slug, cardColor } = Astro.props;
+---
+
+<div
+  class="article-card"
+  style={`background-color: ${cardColor};`}
+>
+	<!-- title -->
+	<div class="px-4 py-4 flex-grow">
+	  	<div class="font-bold text-xl">{title}</div>
+	  	<p class="text-gray-700 text-base">
+	  	  	{excerpt}
+	  	</p>
+	</div>
+
+	<!-- button -->
+	<div class="px-4 py-4 self-end">
+	  	<a
+	  	  	href={`/article/${slug}`}
+	  	  	class="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"
+	  	>
+			Читать далее
+		</a>
+	</div>
+</div>
+
+<style>
+.article-card {
+	/* max-w-96 max-h-60 min-w-48 min-h-32 overflow-hidden shadow-lg bg-white rounded-lg flex flex-col */
+
+	width: 24vw;
+	height:16vw;
+
+	min-width: 200px;
+	min-height: 150px;
+
+	overflow: hidden;
+	border-radius: 15px;
+
+	display: flex;
+	flex-direction: column;
+
+	box-shadow: 3px 5px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+</style>
