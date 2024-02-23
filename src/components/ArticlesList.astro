@@ -66,9 +66,12 @@ const articlesColors = articles ? articles.map(() => getRandomRgbColor()): [];
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', (event: Event) => {
-    const scrollContainer = document.querySelector('.article-card-list') as HTMLElement;
+document.addEventListener('DOMContentLoaded', () => {
+  // Получаем все элементы с классом .article-card-list
+  const scrollContainers = document.querySelectorAll<HTMLElement>('.article-card-list');
 
+  // Применяем логику прокрутки к каждому контейнеру
+  scrollContainers.forEach((scrollContainer) => {
     let isDown: boolean = false;
     let startX: number;
     let scrollLeft: number;
@@ -94,8 +97,9 @@ const articlesColors = articles ? articles.map(() => getRandomRgbColor()): [];
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - scrollContainer.offsetLeft;
-      const walk: number = (x - startX) * 3; // Умножитель для ускорения прокрутки
+      const walk: number = (x - startX) * 3;
       scrollContainer.scrollLeft = scrollLeft - walk;
     });
   });
+});
 </script>

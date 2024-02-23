@@ -1,8 +1,12 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro"
-import ArticlesSection from "../components/ArticlesSection.astro"
+import MainLayout from "../layouts/MainLayout.astro";
+import ArticlesSection from "../components/ArticlesSection.astro";
+import SearchBar from "../components/SearchBar.astro";
+
+const allArticles = await Astro.glob("../pages/articles/*.md");
 ---
 
 <MainLayout title="Welcome to Astro.">
-  <ArticlesSection />
+  <!-- <SearchBar /> -->
+  <ArticlesSection allArticles={allArticles} />
 </MainLayout>
