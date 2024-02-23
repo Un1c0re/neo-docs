@@ -1,0 +1,39 @@
+---
+import ArticleList from "./ArticlesList.astro";
+
+
+interface Article {
+  frontmatter: {
+    title: string;
+    excerpt?: string;
+  };
+  url: string;
+}
+
+
+function chunkArray<T>(array: T[], chunkSize: number): T[][] {
+  const result: T[][] = [];
+  for (let i = 0; i < array.length; i += chunkSize) {
+    result.push(array.slice(i, i + chunkSize));
+  }
+  return result;
+}
+
+const allArticles = await Astro.glob("../pages/articles/*.md");
+
+const articles: Article[] = allArticles.map(article => ({
+  frontmatter: {
+    title: article.frontmatter.title as string,
+    excerpt: article.frontmatter.excerpt as string | undefined,
+  },
+  url: article.url ?? ''
+}));
+
+const articlesChunks: Article[][] = chunkArray(articles, 10);
+---
+
+<div class="flex flex-col items-center justify-between w-11/12">
+    {articlesChunks.map((chunk, index) => (
+        <ArticleList key={index} articles={chunk}/>
+      ))}
+</div>
