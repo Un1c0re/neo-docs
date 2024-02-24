@@ -7,6 +7,6 @@ const allArticles = await Astro.glob("../pages/articles/*.md");
 ---
 
 <MainLayout title="Welcome to Astro.">
-  <!-- <SearchBar /> -->
+  <SearchBar />
   <ArticlesSection allArticles={allArticles} />
 </MainLayout>
