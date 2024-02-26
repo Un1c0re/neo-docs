@@ -4,5 +4,4 @@ export interface ArticleProps {
     excerpt?: string;
     slug: string;
   };
-  content: String;
 }

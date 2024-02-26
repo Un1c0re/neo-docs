@@ -16,7 +16,7 @@ const { allArticles } = Astro.props;
 const articlesChunks: ArticleProps[][] = chunkArray(allArticles, 10);
 ---
 
-<div class="flex flex-col items-center justify-between w-11/12">
+<div class="flex flex-col items-center justify-between w-full">
     {articlesChunks.map((chunk, index) => (
         <ArticleList key={index} articles={chunk}/>
       ))}

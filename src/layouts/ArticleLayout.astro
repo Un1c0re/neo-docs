@@ -1,0 +1,28 @@
+---
+// 1. Свойство frontmatter для доступа к frontmatter страницы и прочим данным
+const { frontmatter } = Astro.props;
+---
+<html>
+    <head>
+        <title>neo-docs</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles/global.css">
+    </head>
+    <body class=" bg-cyan-100 flex flex-col items-center justify-between gap-10">
+        <header class=" text-sky-800 h-16 flex items-stretch justify-between px-10 py-4">
+            <h1 class=" font-bold text-4xl">Neo-docs</h1>
+        </header>
+        <main class="flex flex-col items-stretch justify-between gap-10 bg-white w-11/12 rounded-md p-6">
+            <div class="flex flex-col items-center self-center">
+                <h1 class="font-bold text-3xl">{frontmatter.title}</h1>
+                <h1 class="font-bold text-xl">{frontmatter.excerpt}</h1>
+
+            </div>
+            <slot />
+        </main>
+        <footer class="h-16 flex flex-col items-center">
+            <p>© 2024 СурГУ</p>
+        </footer>
+    </body>
+</html>

@@ -4,10 +4,9 @@ import ArticlesSection from "../components/ArticlesSection.astro";
 import type { ArticleProps } from '../utils/types';
 import type { MarkdownInstance } from "astro";
 
-const allArticles: MarkdownInstance<ArticleProps>[] = await Astro.glob("../content/articles/*.md");
+const allArticles: MarkdownInstance<ArticleProps>[] = await Astro.glob("./articles/*.md");
 ---
 
-<MainLayout title="Welcome to Astro.">
-  <!-- <SearchBar /> -->
+<MainLayout>
   <ArticlesSection allArticles={allArticles} />
 </MainLayout>
