@@ -1,14 +1,7 @@
 ---
 import ArticleList from "./ArticlesList.astro";
+import type { ArticleProps } from '../utils/types';
 
-
-interface Article {
-  frontmatter: {
-    title: string;
-    excerpt?: string;
-  };
-  url: string;
-}
 
 function chunkArray<T>(array: T[], chunkSize: number): T[][] {
   const result: T[][] = [];
@@ -20,7 +13,7 @@ function chunkArray<T>(array: T[], chunkSize: number): T[][] {
 
 const { allArticles } = Astro.props;
 
-const articlesChunks: Article[][] = chunkArray(allArticles, 10);
+const articlesChunks: ArticleProps[][] = chunkArray(allArticles, 10);
 ---
 
 <div class="flex flex-col items-center justify-between w-11/12">

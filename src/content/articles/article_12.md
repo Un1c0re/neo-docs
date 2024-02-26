@@ -1,6 +1,7 @@
 ---
 title: 'Article 12'
 excerpt: 'This is an excerpt for article 12.'
+slug: '12'
 ---
 
 # Article 12
