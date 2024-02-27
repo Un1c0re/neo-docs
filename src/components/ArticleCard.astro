@@ -1,19 +1,32 @@
 ---
-import type { ArticleProps } from '../utils/types'
-const props = Astro.props as { article: ArticleProps, cardColor: string };
-const {article, cardColor} = props;
-// const article: ArticleProps = articleData;
+import type { ArticleProps } from '../utils/types';
+const { article } = Astro.props as {article: ArticleProps};
 
+const minColorGate = 180;
+const maxColorGate = 255;
+const diff = maxColorGate - minColorGate + 1;
+
+function getRandomRGBColor(gate: number, dif: number) {
+  const red		= Math.floor(gate + Math.random() * dif);
+  const green 	= Math.floor(gate + Math.random() * dif);
+  const blue 	= Math.floor(gate + Math.random() * dif);
+  return `rgb(${red},${green},${blue})`;
+}
+
+const _cardColor = getRandomRGBColor(minColorGate, diff);
+const _textColor = getRandomRGBColor(minColorGate / 3, diff);
 ---
 
 <div
   class="article-card"
-  style={`background-color: ${cardColor};`}
+  style={`background-color: ${_cardColor};`}
 >
 	<!-- title -->
-	<div class="px-4 py-4 flex-grow">
-	  	<div class="font-bold text-xl">{article.frontmatter.title}</div>
-	  	<p class="text-gray-700 text-base">
+	<div 
+		class="px-4 py-4 flex-grow"
+	>
+	  	<div class="font-bold text-xl" style={`color: ${_textColor}`}>{article.frontmatter.title}</div>
+	  	<p style={`color: ${_textColor}`}>
 	  	  	{article.frontmatter.excerpt}
 	  	</p>
 	</div>
@@ -37,7 +50,7 @@ const {article, cardColor} = props;
 	height:16vw;
 
 	min-width: 200px;
-	min-height: 150px;
+	min-height: 120px;
 
 	overflow: hidden;
 	border-radius: 15px;
