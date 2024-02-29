@@ -1,6 +1,6 @@
 ---
-title: 'Article 8'
-excerpt: 'This is an excerpt for article 8.'
+title: 'Клинические проявления болезни'
+excerpt: 'подробнее об особенностях проявления нэо'
 slug: 'article_07'
 ---
 

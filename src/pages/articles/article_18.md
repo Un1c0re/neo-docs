@@ -1,6 +1,6 @@
 ---
-title: 'Article 19'
-excerpt: 'This is an excerpt for article 19.'
+title: 'Всероссийское общество редких (орфанных) заболеваний'
+excerpt: 'Подробнее об организации'
 slug: 'article_18'
 ---
 

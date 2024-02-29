@@ -1,6 +1,7 @@
 ---
-title: 'Article 4'
-excerpt: 'This is an excerpt for article 4.'
+title: 'О разновидностях НЭО'
+excerpt: 'подробнее от INCA - Международного Альянса по
+Нейроэндокринным опухолям.'
 slug: 'article_03'
 ---
 
