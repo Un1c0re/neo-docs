@@ -1,9 +1,9 @@
 ---
-title: 'Article 17'
-excerpt: 'This is an excerpt for article 17.'
-slug: '17'
+title: 'Юридическая поддержка'
+excerpt: 'Как происходит помощь пациентам со стороны закона'
+slug: 'article_17'
 ---
 
-# Article 17
+# Article 18
 
-This is the content of article 17. You can add more markdown content here.
+This is the content of article 18. You can add more markdown content here.

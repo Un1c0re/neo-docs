@@ -1,9 +1,9 @@
 ---
-title: 'Article 14'
-excerpt: 'This is an excerpt for article 14.'
-slug: '14'
+title: 'Article 15'
+excerpt: 'This is an excerpt for article 15.'
+slug: 'article_14'
 ---
 
-# Article 14
+# Article 15
 
-This is the content of article 14. You can add more markdown content here.
+This is the content of article 15. You can add more markdown content here.
