@@ -2,8 +2,21 @@
 import ArticleCard from "./ArticleCard.astro";
 import type { ArticleProps } from '../utils/types';
 
+function getRandomRGBColor(gate: number, dif: number) {
+  const red		= Math.floor(gate + Math.random() * dif);
+  const green = Math.floor(gate + Math.random() * dif);
+  const blue 	= Math.floor(gate + Math.random() * dif);
+  return `rgb(${red},${green},${blue})`;
+}
+
 const { articles } = Astro.props as { articles: ArticleProps[] };
 
+const minColorGate = 180;
+const maxColorGate = 255;
+const diff = maxColorGate - minColorGate + 1;
+
+const _cardColor = getRandomRGBColor(minColorGate, diff);
+const _textColor = getRandomRGBColor(minColorGate / 3.5, diff);
 ---
 
 <div class="flex flex-col items-center justify-between">
@@ -12,7 +25,9 @@ const { articles } = Astro.props as { articles: ArticleProps[] };
       articles?.map((article, index) => (
         <div class="px-4 py-2">
           <ArticleCard
-            article={article}
+            article   = {  article   }
+            cardColor = { _cardColor }
+            textColor = { _textColor }
           />
         </div>
       ))
@@ -27,7 +42,7 @@ const { articles } = Astro.props as { articles: ArticleProps[] };
     align-items: center;
     overflow-x: auto;
     overflow-y: hidden;
-    width: 92vw;
+    width: 90vw;
   }
 
   .article-card-list::-webkit-scrollbar {

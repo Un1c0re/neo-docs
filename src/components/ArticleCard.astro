@@ -1,63 +1,58 @@
 ---
-import type { ArticleProps } from '../utils/types';
-const { article } = Astro.props as {article: ArticleProps};
+import type { ArticleProps } from "../utils/types";
 
-const minColorGate = 180;
-const maxColorGate = 255;
-const diff = maxColorGate - minColorGate + 1;
 
-function getRandomRGBColor(gate: number, dif: number) {
-  const red		= Math.floor(gate + Math.random() * dif);
-  const green 	= Math.floor(gate + Math.random() * dif);
-  const blue 	= Math.floor(gate + Math.random() * dif);
-  return `rgb(${red},${green},${blue})`;
-}
-
-const _cardColor = getRandomRGBColor(minColorGate, diff);
-const _textColor = getRandomRGBColor(minColorGate / 3, diff);
+const props = Astro.props as {
+	article: ArticleProps;
+	cardColor: string;
+	textColor: string;
+};
+const { article, cardColor, textColor } = props;
 ---
 
-<div
-  class="article-card"
-  style={`background-color: ${_cardColor};`}
+<div 
+	class="article-card" 
+	style={`background-color: ${cardColor};`}
+	data-slug={article.frontmatter.slug}
 >
-	<!-- title -->
-	<div
-		class="px-4 py-4 flex-grow"
-	>
-	  	<div class="font-bold text-xl" style={`color: ${_textColor}`}>{article.frontmatter.title}</div>
-	  	<p style={`color: ${_textColor}`}>
-	  	  	{article.frontmatter.excerpt}
-	  	</p>
-	</div>
-
-	<!-- button -->
-	<div class="px-4 py-4 self-end">
-	  	<a
-	  	  	href={`/articles/${article.frontmatter.slug}`}
-	  	  	class="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"
-	  	>
-			Читать далее
-		</a>
+	<div class="px-4 py-2 flex-grow">
+		<div class="font-bold text-xl" style={`color: ${textColor}`}>
+			{article.frontmatter.title}
+		</div>
+		<p style={`color: ${textColor}`}>
+			{article.frontmatter.excerpt}
+		</p>
 	</div>
 </div>
 
 <style>
-.article-card {
+	.article-card {
+		width: 24vw;
+		height: 16vw;
 
-	width: 24vw;
-	height:16vw;
+		min-width: 200px;
+		min-height: 140px;
 
-	min-width: 200px;
-	min-height: 120px;
+		overflow: hidden;
+		border-radius: 15px;
 
-	overflow: hidden;
-	border-radius: 15px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
 
-	display: flex;
-	flex-direction: column;
-
-	box-shadow: 3px 5px 10px 0 rgba(0, 0, 0, 0.3);
-}
-
+		box-shadow: 3px 5px 10px 0 rgba(0, 0, 0, 0.3);
+		cursor: pointer;
+	}
 </style>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const articleCards = document.querySelectorAll<HTMLElement>(".article-card");
+		articleCards.forEach((card) => {
+			const slug = card.getAttribute('data-slug');
+			card.addEventListener('click', () => {
+				window.location.href = `/articles/${slug}`;
+			})
+		})
+	});
+</script>
